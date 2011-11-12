@@ -1,4 +1,4 @@
-# James Anderson , Adam Honse <amhb59>
+# James Anderson 
 # My first make file
 # Some reminders:
 # Commands start with TAB not spaces

@@ -1,7 +1,7 @@
-#ifndef MINI_DRIVE_H
-#define MINI_DRIVE_H
+#ifndef MINIDRIVE_H
+#define MINIDRIVE_H
 /*******************************************************************************
-* @file mini_drive.h
+* @file MiniDrive.h
 * @author James Anderson <jra798>
 * @date 11/11/2011
 * @version 1.0
@@ -34,7 +34,21 @@ class MiniDrive
             float pos_y;
             int cent_val;
             
-
+            //calculated params
+            float diameter;
+            float x_rot_per;
+            float y_rot_per;
+            
+            //x and y movement values
+            float move_x;
+            float move_y;
+            float move_speed;
+            
+            //x and y rotation values
+            float rot_x;
+            float rot_y
+            float rot_speed;
+            
             //commands
             int cmd_x;
             int cmd_y;
@@ -50,6 +64,11 @@ class MiniDrive
         int vel_x;
         int vel_y;
         int vel_yaw;
+        
+        //max velocites
+        float max_vel_x 
+        float max_vel_y
+        
         
 };
 

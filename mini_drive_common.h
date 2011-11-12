@@ -19,7 +19,6 @@
 #include <vector>
 
 //general defines
-#define PI 3.14159265
 
 #define CMD_MAX                 255 //max pwm
 #define CMD_MIN                 0   //min pwm
