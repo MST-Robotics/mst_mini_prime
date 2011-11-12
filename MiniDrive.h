@@ -18,7 +18,8 @@ class MiniDrive
     public:
         
         //initializer
-        mini_drive();
+        //mini_drive ();
+        MiniDrive();
 
         //set the robots x y and rotational velocities
         void SetVel(float x, float y, float yaw); 
@@ -46,28 +47,28 @@ class MiniDrive
             
             //x and y rotation values
             float rot_x;
-            float rot_y
+            float rot_y;
             float rot_speed;
             
             //x and y sum values
             float sum_x;
-            float sum_y
+            float sum_y;
             float sum_speed;
             
             //commands
             int cmd_vel;
-            int cmd_yaw
+            int cmd_yaw;
         };
         
         //stores data for all three wheels
-        vector <Wheel> wheels;
+        std::vector<Wheel> wheels;
         
-        float servo_range ;
+        float servo_range;
         
         
         //max velocites
-        float max_vel_x 
-        float max_vel_y
+        float max_vel_x; 
+        float max_vel_y;
         
         
 };

@@ -24,6 +24,7 @@
 #include "MiniDrive.h"
 #include <signal.h>
 #include <time.h>
+#include <unistd.h>
 #define SOME_TIME_FACTOR .02
 //These are the defines for setting speeds
 #define X_SPEED 0.1

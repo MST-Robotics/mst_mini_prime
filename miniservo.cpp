@@ -13,16 +13,31 @@ int miniservo::setPod(int po, bool top, char speed)
 {
 	if (po < 0 || po > 3) return -1; //let the caller know that the pod is out of range
 	//now we can start setting parameters
-	if (top) pod[po -1].angle = speed;
-	else pod[po - 1].velocity = speed;
+	if (top) pods[po -1].angle = speed;
+	else pods[po - 1].velocity = speed;
 	
 	//now that the new parameters are stored, its time to update the servos
 	// the first byte contains the most significat bit. The next byte contains
 	//the lower 7 bits. This is because the Pololu protocal dicatates that
 	//the first bit of a character must be 0
 	char temp[2];
+	//try an inline assembly call here to do bit shifting
+	temp[1] = speed & 0x7F; //mask off the first bit as is necessary for the protocol
+	// shift the first bit to the last one so we can create the next mask
+	temp[0] = (speed >> 8) & 0x01; //only care about the last bit now
+	
+	if (top) setPosition(pods[po-1].rot, temp);
+	else setPosition(pods[po-1].drive, temp);
+	
+}
+
+void miniservo::center()
+{
+	char temp[2];
 	
 	
+	if (top) setPosition(pods[0].rot, temp);
+	else setPosition(pods[0].drive, temp);
 }
 
 void miniservo::setParam(char servo, char command)

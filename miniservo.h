@@ -25,11 +25,11 @@ class miniservo
 	
 	public:
 	//variables first
-		struct pod[3]; //miniprime only has three pods
+		struct pod pods[3]; //miniprime only has three pods
 		
 		//now functions
-		miniservo () {sio.initializeSerialPort("/dev/ttyUSB2");}
-		
+		/** constructors. Both try to open the serial port */
+		miniservo () {sio.initializeSerialPort("/dev/ttyS2");}
 		miniservo (char *serial) {sio.initializeSerialPort(serial);}
 		
 /***********************************************************************
@@ -40,6 +40,32 @@ class miniservo
 * Returns: nothing
 ***********************************************************************/
 	int setPod(int po, bool top, char speed); 
+
+/***********************************************************************
+* Function Name: center
+* Purpose: realigns the servos to a preset point and sets this as neutral
+* 	This should be done on starup and can be repeated if necessary later
+* Arguments: none
+* Returns: nothing
+***********************************************************************/	
+	void center(); 
+
+/***********************************************************************
+* Function Name: getSpeed()
+* Purpose: returns the speed of the specified pod to the caller
+* Arguments: po - the pod to look at
+* Returns: nothing
+***********************************************************************/		
+	char getSpeed(char po) {return (po > 1 && po < 4) ? pods[po-1].velocity : 0;}
+	
+/***********************************************************************
+* Function Name: getAngle()
+* Purpose: returns the angle of the specified pod to the caller
+* Arguments: po - the pod to look at
+* Returns: nothing
+***********************************************************************/		
+	char getAngle(char po) {return (po > 1 && po < 4) ? pods[po-1].angle : 0;}
+	
 	
 	private:
 	

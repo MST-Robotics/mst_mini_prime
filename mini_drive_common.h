@@ -11,10 +11,10 @@
 
 //general includes bellow
 
-#include "stdlib.h"
-#include "stdio.h"
-#include "string.h"
-#include "math.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
 
 #include <vector>
 
@@ -43,6 +43,11 @@
 //tunning parameters
 
 #define MAX_WHEEL_SPEED              .5  //max speed in meters per seccond
+
+//center position for each wheel
+#define WHEEL_1_CENTER			0 //set everything relative to wheel 1
+#define WHEEL_2_CENTER			0
+#define	WHEEL_3_CENTER			0
 
 
 

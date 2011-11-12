@@ -25,8 +25,9 @@ using namespace std;
 *********************************************************************************************/
 serialDriver::serialDriver(void)
 {
+	m_open = false;
+}
 
-}//==============================================
 /********************************************************************************************
 * Function Name: ~serialDriver
 * Purpose: destructor for this class
@@ -35,6 +36,7 @@ serialDriver::serialDriver(void)
 *********************************************************************************************/
 serialDriver::~serialDriver(void)
 {
+	m_open = false; //pointless, but does get the point accross
 	close(fd_serial); //close the file discriptor when we are destroyed
 }
 
@@ -82,7 +84,7 @@ try{
 
 	err = tcsetattr(fd_serial, TCSANOW, &tty); //apply the new settings to the port
 	if (err < 0) cout << "Error applying new serial port settings" << flush;
-
+	m_open = true;
 
 	cout << "Serial Port Ready: " << fd_serial << "\n" << flush;
 } //end try
@@ -99,7 +101,8 @@ catch(...) {
 *********************************************************************************************/
 int serialDriver::readSerial(char *data)
 {
-try{
+try
+{
 	int t = read(fd_serial, data, 1);
 	if (t < 0) return -1;
 	return 1;
@@ -114,9 +117,29 @@ catch(...){cout <<"Error reading port\n" << flush;}
 *********************************************************************************************/
 int serialDriver::writeSerial(char *data, unsigned int size )
 {
-try{	
+try
+{	
 	int err = write(fd_serial, data, size);
 	if (err < 0) {cout << "Error writing to the port"; return -1;}
+	return 1;
+}
+catch(...){cout << "Error writing: " << strerror(errno) << "\n" <<  flush; return -1;}
+}//=======================================================
+/********************************************************************************************
+* Function Name: writeSerial
+* Purpose: writes a byte 
+* Arguments: data - the byte of data to write
+* Returns: 1 on success
+*********************************************************************************************/
+int serialDriver::writeSerial(char *data[], unsigned int size )
+{
+try
+{	
+	for (int i = 0; i < size; i++) 
+	{
+		int err = write(fd_serial, data[i],1);
+		if (err < 0) {cout << "Error writing to the port"; return -1;}
+	}
 	return 1;
 }
 catch(...){cout << "Error writing: " << strerror(errno) << "\n" <<  flush; return -1;}

@@ -28,7 +28,7 @@ MiniDrive::MiniDrive()
     
     wheels[3].pos_x = WHEEL_3_POS_X;
     wheels[3].pos_y = WHEEL_3_POS_Y;
-    wheels[3].cent_val = WHEEL_3_CENT_VAL*PI/180;
+    wheels[3].cent_val = WHEEL_3_CENT_VAL*M_PI/180;
     
     //initalize other globals
     servo_range = DEG_RANGE;
@@ -51,7 +51,7 @@ MiniDrive::MiniDrive()
     }
     
     //get max componet velocities
-    max_vel_x = MAX_SPEED * sin(PI/2);
+    max_vel_x = MAX_WHEEL_SPEED * sin(M_PI/2);
     max_vel_y = max_vel_x;
     
 }
@@ -119,7 +119,9 @@ void MiniDrive::SetVel(float x_in, float y_in, float yaw_in)
     for(int i = 0; i < wheels.size(); i++)
     {
         //find the speed for each wheel 
-        cmd_vel = CMD_MAX * (hypot(wheels[i].sum_x / wheels[i].sum_y) / MAX_WHEEL_SPEED)
+        
+        /** TODO: fix hypot. It takes 2 commands */
+        cmd_vel = CMD_MAX * (hypot(wheels[i].sum_x / wheels[i].sum_y) / MAX_WHEEL_SPEED);
     }
     
     //find rotation commands accounting for motor limitations
