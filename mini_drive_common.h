@@ -27,23 +27,22 @@
 //wheels are numbered starting from the front and rotating counter clockwise
 
 #define WHEEL_1_POS_X           0   //x loction from center of rotation in meters
-#define WHEEL_1_POS_Y           1   //y loction from center of rotation in meters
+#define WHEEL_1_POS_Y           .1   //y loction from center of rotation in meters
 #define WHEEL_1_CENT_VAL        127   //pwm position of wheel at 0 yaw
 
-#define WHEEL_2_POS_X           -0.5   //x loction from center of rotation in meters
-#define WHEEL_2_POS_Y           -0.5   //y loction from center of rotation in meters
+#define WHEEL_2_POS_X           -0.05   //x loction from center of rotation in meters
+#define WHEEL_2_POS_Y           -0.05   //y loction from center of rotation in meters
 #define WHEEL_2_CENT_VAL        127   //pwm position of wheel at 0 yaw
 
-#define WHEEL_3_POS_X           0.5   //x loction from center of rotation in meters
-#define WHEEL_3_POS_Y           -0.5   //y loction from center of rotation in meters
+#define WHEEL_3_POS_X           0.05   //x loction from center of rotation in meters
+#define WHEEL_3_POS_Y           -0.05   //y loction from center of rotation in meters
 #define WHEEL_3_CENT_VAL        127   //pwm position of wheel at 0 yaw
 
 #define DEG_RANGE               3.14159265   //range of the rotation sevos in radians
 
 //tunning parameters
 
-#define MAX_SPEED              .5  //max speed in meters per seccond
-#define MAX_ROT                .5  //max rotation in meters per seccond
+#define MAX_WHEEL_SPEED              .5  //max speed in meters per seccond
 
 
 

@@ -49,9 +49,13 @@ class MiniDrive
             float rot_y
             float rot_speed;
             
+            //x and y sum values
+            float sum_x;
+            float sum_y
+            float sum_speed;
+            
             //commands
-            int cmd_x;
-            int cmd_y;
+            int cmd_vel;
             int cmd_yaw
         };
         
@@ -60,10 +64,6 @@ class MiniDrive
         
         float servo_range ;
         
-        //velocities
-        int vel_x;
-        int vel_y;
-        int vel_yaw;
         
         //max velocites
         float max_vel_x 
