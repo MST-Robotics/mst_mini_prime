@@ -34,11 +34,7 @@ class MiniDrive
             float pos_y;
             int cent_val;
             
-            //velocities
-            float vel_x;
-            float vel_y;
-            float vel_yaw;
-            
+
             //commands
             int cmd_x;
             int cmd_y;
@@ -50,6 +46,10 @@ class MiniDrive
         
         float servo_range ;
         
+        //velocities
+        int vel_x;
+        int vel_y;
+        int vel_yaw;
         
 };
 

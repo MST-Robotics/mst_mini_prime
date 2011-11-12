@@ -36,8 +36,25 @@ MiniDrive::MiniDrive()
 
 void MiniDrive::SetVel(float x, float y, float yaw)
 {
+    float speed_percent, max_vel_x, max_vel_y, per_vel_x, per_vel_y;
+    
+    
+    //get max componet velocities
+    max_vel_x = MAX_SPEED * sin(PI/2);
+    max_vel_y = max_vel_x;
+    
+    //calculate the percentage scalar of velocity we can obtain
+    speed_percent = MAX_SPEED / sqrt( x^2 + y^2)
+    
+    //calculate percent of total motor speed 
+    per_vel_x = max_vel_x * speed_percent
+    per_vel_y = max_vel_y * speed_percent
+    
+    
+    
     for(int i; i < wheels.size(); i++)
     {
-        wheels[i].vel_x = 
+        //enter velocities as percentage of max speed
+        wheels[i].vel_x = x / 
     }
 }
