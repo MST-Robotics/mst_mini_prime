@@ -39,7 +39,7 @@ MiniDrive::MiniDrive()
         float  rot_ang;
         
         //get the angle of the wheel when it is tangent to the center of the robot
-        rot_ang = atan2(wheels[i].pos_x, wheels[i].pos_y) + (M_PI/2);
+        rot_ang = atan2(wheels[i].pos_y, wheels[i].pos_x) + (M_PI/2);
         
         //calcutlate the x and y percents to make faster
         wheels[i].x_rot_per = cos(rot_ang);
@@ -62,7 +62,6 @@ void MiniDrive::SetVel(float x_in, float y_in, float yaw_in)
     float fastest_wheel_speed = 0;
     float speed_scaler;
     //TODO most of these loops can be combined
-    
     
     //calculate the x and y movement vectors in m/s
     for(int i = 0; i < wheels.size(); i++)
@@ -118,10 +117,23 @@ void MiniDrive::SetVel(float x_in, float y_in, float yaw_in)
     //find the velocity commands
     for(int i = 0; i < wheels.size(); i++)
     {
-        //find the speed for each wheel 
+        //find the yaw angle for each wheel
+        wheels[i].yaw_angle = atan2(wheels[i].sum_y, wheels[i].sum_x);
         
-        /** TODO: fix hypot. It takes 2 commands */
-        cmd_vel = CMD_MAX * (hypot(wheels[i].sum_x / wheels[i].sum_y) / MAX_WHEEL_SPEED);
+        //figure out what wire wraping state we are in 
+        if(wheels[i].forward)
+        {
+            //wheel wrap state forward
+            
+        }
+        else
+        {
+            //wheel wrap state reverce
+            
+        }
+        
+        //find the speed for each wheel 
+        wheels[i].cmd_vel = CMD_MAX * (hypot(wheels[i].sum_x, wheels[i].sum_y) / MAX_WHEEL_SPEED);
     }
     
     //find rotation commands accounting for motor limitations
@@ -133,6 +145,7 @@ void MiniDrive::SetVel(float x_in, float y_in, float yaw_in)
         //to see if it would be faster to switch states and run the motor backward
         //bellow I also need to take these commands and pipe them into the serial driver
         //its 2:31 and thats alot of work so im going to bed sorry Daniel 
+        
     }
     
 }

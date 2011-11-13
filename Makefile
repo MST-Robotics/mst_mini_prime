@@ -8,15 +8,12 @@
 
 CXX = g++
 
-all: client server
+all: keyboard_control
 
-client: client.c myTCP.cpp myNetwork.c
-$(CXX) $^ -lpthread -fno-stack-protector -fpermissive -w -o $@
-
-server: server.c myTCP.cpp myNetwork.c
-$(CXX) $^ -lpthread -fpermissive -fno-stack-protector -w -o $@
+keyboard_control: keyboard_control.cpp MiniDrive.cpp miniservo.cpp 
+	$(CXX) keyboard_control.cpp MiniDrive.cpp miniservo.cpp  -o $@
 
 clean:
-rm -f client server
+	rm -f keyboard_control
 
 

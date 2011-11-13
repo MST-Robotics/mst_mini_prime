@@ -55,6 +55,14 @@ class MiniDrive
             float sum_y;
             float sum_speed;
             
+            //yaw angle
+            float yaw_angle;
+            
+            //wire wraping states
+            bool forward;
+            float prev_yaw;
+            
+            
             //commands
             int cmd_vel;
             int cmd_yaw;
