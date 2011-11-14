@@ -10,8 +10,8 @@ CXX = g++
 
 all: keyboard_control
 
-keyboard_control: keyboard_control.cpp MiniDrive.cpp miniservo.cpp 
-	$(CXX) keyboard_control.cpp MiniDrive.cpp miniservo.cpp  -o $@
+keyboard_control: keyboard_control.cpp MiniDrive.cpp miniservo.cpp serialDriver.cpp
+	$(CXX) keyboard_control.cpp MiniDrive.cpp miniservo.cpp serialDriver.cpp  -lncurses -o $@
 
 clean:
 	rm -f keyboard_control

@@ -33,11 +33,11 @@ int miniservo::setPod(int po, bool top, char speed)
 
 void miniservo::center()
 {
-	char temp[2];
+	//char temp[2];
 	
 	
-	if (top) setPosition(pods[0].rot, temp);
-	else setPosition(pods[0].drive, temp);
+	//if (top) setPosition(pods[0].rot, temp);
+	//else setPosition(pods[0].drive, temp);
 }
 
 void miniservo::setParam(char servo, char command)
