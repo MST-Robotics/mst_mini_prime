@@ -21,17 +21,18 @@ MiniDrive::MiniDrive()
     wheels[1].pos_x = WHEEL_1_POS_X;
     wheels[1].pos_y = WHEEL_1_POS_Y;
     wheels[1].cent_val = WHEEL_1_CENT_VAL*M_PI/180;
+    wheels[1].servo_range = WHEEL_1_RANGE;
     
     wheels[2].pos_x = WHEEL_2_POS_X;
     wheels[2].pos_y = WHEEL_2_POS_Y;
     wheels[2].cent_val = WHEEL_2_CENT_VAL*M_PI/180;
+    wheels[2].servo_range = WHEEL_2_RANGE;
     
     wheels[3].pos_x = WHEEL_3_POS_X;
     wheels[3].pos_y = WHEEL_3_POS_Y;
     wheels[3].cent_val = WHEEL_3_CENT_VAL*M_PI/180;
-    
-    //initalize other globals
-    servo_range = DEG_RANGE;
+    wheels[3].servo_range = WHEEL_3_RANGE;
+
     
     //pre calculate som parameters for rotation
     for(int i = 0; i < wheels.size(); i++)
@@ -47,13 +48,17 @@ MiniDrive::MiniDrive()
         
         //calculate radius from the center of the robot
         wheels[i].diameter = hypot(wheels[i].pos_x, wheels[i].pos_y) * 2;
-        
     }
     
-    //get max componet velocities
-    max_vel_x = MAX_WHEEL_SPEED * sin(M_PI/2);
-    max_vel_y = max_vel_x;
-    
+    //calculate the whire wrap states
+    for(int i = 0; i < wheels.size(); i++)
+    {
+        //calculate velocities as percentage of max speed
+        wheels[i].forward = 1;
+        wheels[i].max_fwd_yaw = wheels[i].max_fwd_yaw
+        wheels[i].move_y = y_in;
+        wheels[i].move_speed = hypot(x_in, y_in);
+    }
 }
 
 

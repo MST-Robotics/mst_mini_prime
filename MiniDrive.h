@@ -35,6 +35,9 @@ class MiniDrive
             float pos_y;
             int cent_val;
             
+            //range of rotation servo
+            float servo_range;
+            
             //calculated params
             float diameter;
             float x_rot_per;
@@ -61,6 +64,10 @@ class MiniDrive
             //wire wraping states
             bool forward;
             float prev_yaw;
+            float max_fwd_yaw;
+            float min_fwd_yaw;
+            float max_rev_yaw;
+            float min_rev_yaw
             
             
             //commands
@@ -71,14 +78,9 @@ class MiniDrive
         //stores data for all three wheels
         std::vector<Wheel> wheels;
         
-        float servo_range;
         
         
-        //max velocites
-        float max_vel_x; 
-        float max_vel_y;
-        
-        
+
 };
 
 #endif
