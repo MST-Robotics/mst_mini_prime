@@ -34,6 +34,7 @@ class MiniDrive
             float pos_x;
             float pos_y;
             int cent_val;
+            float cent_ang;
             
             //range of rotation servo
             float servo_range;
@@ -63,7 +64,8 @@ class MiniDrive
             
             //wire wraping states
             bool forward;
-            float prev_yaw;
+            float prev_yaw_rel;
+            float prev_yaw_abs;
             float max_fwd_yaw;
             float min_fwd_yaw;
             float max_rev_yaw;
