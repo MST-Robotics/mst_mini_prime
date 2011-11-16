@@ -60,7 +60,8 @@ MiniDrive::MiniDrive()
     //calculate the whire wrap states
     for(int i = 0; i < wheels.size(); i++)
     {
-        servo_cmd.setPosition(i,wheels[i].cent_val)
+        servo_cmd.setPod(i,1,wheels[i].cent_val);
+        servo_cmd.setPod(i,0,127);
     
         //calculate velocities as percentage of max speed
         wheels[i].forward = 1;
