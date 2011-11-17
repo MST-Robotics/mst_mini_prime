@@ -53,8 +53,7 @@ MiniDrive::MiniDrive()
         wheels[i].diameter = hypot(wheels[i].pos_x, wheels[i].pos_y) * 2;
     }
     
-    //TODO set the wheels rotatins to center
-    
+    //create servo driver class
     miniservo servo_cmd;
     
     //calculate the whire wrap states
@@ -68,7 +67,7 @@ MiniDrive::MiniDrive()
         wheels[i].max_fwd_yaw = wheels[i].cent_ang + (wheels[i].servo_range/2);
         wheels[i].max_fwd_yaw = wheels[i].cent_ang - (wheels[i].servo_range/2);
         
-        //set for reverce
+        //set for reverse
         wheels[i].max_rev_yaw = wheels[i].cent_ang + (wheels[i].servo_range/2);
         wheels[i].max_rev_yaw = wheels[i].cent_ang - (wheels[i].servo_range/2);
     }
@@ -146,7 +145,7 @@ void MiniDrive::SetVel(float x_in, float y_in, float yaw_in)
             
             delta_yaw = wheels[i].yaw_angle - prev_yaw_abs;
             prev_yaw_abs += delta_yaw;
-            if 
+            
             
         }
         else
